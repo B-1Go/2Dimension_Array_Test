@@ -8,8 +8,6 @@ using std::wcout;
 using std::endl;
 using std::string;
 
-// let's make inventory! yeah~!!
-
 // 뱀의 위치를 저장할 수 있는 자료형을 만들자
 // list가 적당할 거 같다.
 
