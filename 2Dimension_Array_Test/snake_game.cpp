@@ -107,10 +107,14 @@ public:
 			return *this;
 		}
 
-		//iterator operator==()
-		//{
-		//	// 비교 함수 만들기!
-		//}
+		bool operator==(const iterator& _otheriter)
+		{
+			if (this->iter_snake == _otheriter.iter_snake && this->iter_node == _otheriter.iter_node)
+			{
+				return true;
+			}
+			return false;
+		}
 	};
 };
 
@@ -181,21 +185,21 @@ snake::iterator snake_head;
 bool isinput, gamestop;
 // 포지션 저장 및 방향, 음식 위치 및 점수
 int x = 0, y = 0, dir = 0, fx, fy, score;
-int inven_size = 20;
+int board_size = 20;
 // 2차원 문자열 배열 동적 할당
-string** s_matrix = new string * [inven_size];
+string** s_matrix = new string * [board_size];
 
 void food_reset()
 {
-	fx = rand() % inven_size;
-	fy = rand() % inven_size;
+	fx = rand() % board_size;
+	fy = rand() % board_size;
 }
 
 void setup()
 {
-	for (int i = 0; i < inven_size; ++i)
+	for (int i = 0; i < board_size; ++i)
 	{
-		s_matrix[i] = new string[inven_size];
+		s_matrix[i] = new string[board_size];
 	}
 	gamestop = true;
 	snake_body.push_front(x, y);
@@ -205,7 +209,7 @@ void setup()
 void setup_clear()
 {
 	// 2차원 배열 동적 할당 해제
-	for (int i = 0; i < inven_size; ++i)
+	for (int i = 0; i < board_size; ++i)
 	{
 		delete[] s_matrix[i];
 	}
@@ -216,9 +220,9 @@ void draw()
 {
 	system("cls");
 	// inventory 창
-	for (int i = 0; i < inven_size; ++i)
+	for (int i = 0; i < board_size; ++i)
 	{
-		for (int j = 0; j < inven_size; ++j)
+		for (int j = 0; j < board_size; ++j)
 		{
 			cout << s_matrix[i][j];
 		}
@@ -270,22 +274,23 @@ void input()
 
 void update()
 {
-	for (int i = 0; i < inven_size; ++i)
+	for (int i = 0; i < board_size; ++i)
 	{
-		for (int j = 0; j < inven_size; ++j)
+		for (int j = 0; j < board_size; ++j)
 		{
 			s_matrix[i][j] = "□";
 		}
 	}
 	s_matrix[fx][fy] = "★";
 	snake_iter = snake_body.begin();
+	snake_head = snake_body.begin();
 	s_matrix[(*snake_iter)->x][(*snake_iter)->y] = "◆";
 	--snake_iter;
 	for (int i = 0; i < snake_body.get_length() - 1; ++i)
 	{
-		if (snake_head == snake_iter)
+		if ((*snake_head)->x == (*snake_iter)->x && (*snake_head)->y == (*snake_iter)->y)
 		{
-
+			gamestop = false;
 		}
 		s_matrix[(*snake_iter)->x][(*snake_iter)->y] = "■";
 		--snake_iter;
@@ -297,24 +302,20 @@ void logic()
 	switch (dir)
 	{
 	case (int)Diraction::UP:
-		if (x <= 0) { x = x + (inven_size - 1); }
+		if (x <= 0){ x = x + (board_size - 1); }
 		else { x--; }
-		//dir = 0;
 		break;
 	case (int)Diraction::LEFT:
-		if (y <= 0) { y = y + (inven_size - 1); }
+		if (y <= 0) { y = y + (board_size - 1); }
 		else { y--; }
-		//dir = 0;
 		break;
 	case (int)Diraction::RIGHT:
-		if (y >= inven_size - 1) { y = y - (inven_size - 1); }
+		if (y >= board_size - 1) { y = y - (board_size - 1); }
 		else { y++; }
-		//dir = 0;
 		break;
 	case (int)Diraction::DOWN:
-		if (x >= inven_size - 1) { x = x - (inven_size - 1); }
+		if (x >= board_size - 1) { x = x - (board_size - 1); }
 		else { x++; }
-		//dir = 0;
 		break;
 	case (int)Diraction::ESC:
 		gamestop = false;
@@ -345,11 +346,11 @@ int main()
 		draw();
 		//while (isinput)
 		//{
-		//	input();
+		//	input(); // 입력 1번에 1칸 움직이게 하기
 		//}
 		input();
 		logic();
-		Sleep(100);
+		Sleep(50);
 	}
 
 	setup_clear();
