@@ -34,6 +34,9 @@
     <Filter Include="헤더 파일\Making\04. Object">
       <UniqueIdentifier>{e86d7ffc-cb18-4b1e-b517-6dc1925a6ab0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Making\03. Manager\KeyMgr">
+      <UniqueIdentifier>{78aa9ae2-d4c0-4a0a-818d-fdd4e396df3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="snake_body.cpp">
@@ -60,6 +63,18 @@
     <ClCompile Include="CItem.cpp">
       <Filter>헤더 파일\Making\04. Object</Filter>
     </ClCompile>
+    <ClCompile Include="CKeyMgr.cpp">
+      <Filter>헤더 파일\Making\03. Manager\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CCore.cpp">
+      <Filter>헤더 파일\Making\02. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleMouseClick.cpp">
+      <Filter>헤더 파일\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleMouseClickLite.cpp">
+      <Filter>헤더 파일\Basic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h">
@@ -73,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="CItem.h">
       <Filter>헤더 파일\Making\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CKeyMgr.h">
+      <Filter>헤더 파일\Making\03. Manager\KeyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CCore.h">
+      <Filter>헤더 파일\Making\02. Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
