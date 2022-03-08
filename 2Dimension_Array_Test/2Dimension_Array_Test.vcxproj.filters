@@ -37,6 +37,18 @@
     <Filter Include="헤더 파일\Making\03. Manager\KeyMgr">
       <UniqueIdentifier>{78aa9ae2-d4c0-4a0a-818d-fdd4e396df3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Making\04. Object\Player">
+      <UniqueIdentifier>{6d09fa6a-5603-43bd-ae00-96ba8fadc3a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Making\04. Object\Item">
+      <UniqueIdentifier>{bcd36e6d-b96e-4c3e-954c-b6c00812abcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Making\03. Manager\SceneMgr">
+      <UniqueIdentifier>{dd075450-7ec4-44ac-b854-42cb3a36fa69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Making\03. Manager\TimeMgr">
+      <UniqueIdentifier>{864629a6-dfe3-494c-8dde-1f4ada816b9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="snake_body.cpp">
@@ -60,9 +72,6 @@
     <ClCompile Include="main.cpp">
       <Filter>헤더 파일\Making</Filter>
     </ClCompile>
-    <ClCompile Include="CItem.cpp">
-      <Filter>헤더 파일\Making\04. Object</Filter>
-    </ClCompile>
     <ClCompile Include="CKeyMgr.cpp">
       <Filter>헤더 파일\Making\03. Manager\KeyMgr</Filter>
     </ClCompile>
@@ -75,6 +84,15 @@
     <ClCompile Include="ConsoleMouseClickLite.cpp">
       <Filter>헤더 파일\Basic</Filter>
     </ClCompile>
+    <ClCompile Include="CPlayer.cpp">
+      <Filter>헤더 파일\Making\04. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CItem.cpp">
+      <Filter>헤더 파일\Making\04. Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimeMgr.cpp">
+      <Filter>헤더 파일\Making\03. Manager\TimeMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h">
@@ -86,14 +104,20 @@
     <ClInclude Include="define.h">
       <Filter>헤더 파일\Making\01. Header</Filter>
     </ClInclude>
-    <ClInclude Include="CItem.h">
-      <Filter>헤더 파일\Making\04. Object</Filter>
-    </ClInclude>
     <ClInclude Include="CKeyMgr.h">
       <Filter>헤더 파일\Making\03. Manager\KeyMgr</Filter>
     </ClInclude>
     <ClInclude Include="CCore.h">
       <Filter>헤더 파일\Making\02. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
+      <Filter>헤더 파일\Making\04. Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CItem.h">
+      <Filter>헤더 파일\Making\04. Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimeMgr.h">
+      <Filter>헤더 파일\Making\04. Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

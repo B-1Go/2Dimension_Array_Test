@@ -1,7 +1,9 @@
 #pragma once
 
-#include <iostream>
 #include <conio.h>
+
+#include <iostream>
+#include <stdio.h>
 #include <Windows.h>
 
 #include <vector>

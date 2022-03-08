@@ -1,4 +1,46 @@
+#include "global.h"
 #include "CKeyMgr.h"
+
+int g_arr[(int)KEY::LAST] =
+{
+	VK_LEFT, //LEFT,
+	VK_RIGHT, //RIGHT,
+	VK_UP, //UP,
+	VK_DOWN, //DOWN,
+
+	'Q',
+	'W',
+	'E',
+	'R',
+	'T',
+	'Y',
+	'U',
+	'I',
+	'O',
+	'P',
+	'A',
+	'S',
+	'D',
+	'F',
+	'G',
+	'Z',
+	'X',
+	'C',
+	'V',
+	'B',
+
+	VK_MENU, //ALT,
+	VK_CONTROL, //CTRL,
+	VK_LSHIFT, //LSHIFT,
+	VK_SPACE, //SPACE,
+	VK_RETURN, //ENTER,
+	VK_ESCAPE, //ESC,
+
+	VK_LBUTTON, // Mouse Left Click
+	VK_RBUTTON, // Mouse Right Click
+
+	//LAST,
+};
 
 CKeyMgr::CKeyMgr()
 {
@@ -18,32 +60,62 @@ void CKeyMgr::init()
 
 void CKeyMgr::update()
 {
-	char c;
-	while (true)
-	{
-		// 키보드가 감지되면 if문이 실행됨
-		if (_kbhit())
-		{
-			c = _getch();
-			if (c == -32) // char는 -127~128 만 표현이 가능해서 224 숫자가 들어오면 -32가 된다.
-			{
-				c = _getch();
+	// 윈도우 포커싱 알아내기
+	//HWND hMainWnd = CCore::GetInst()->GetMainHwnd();
+	//HWND hWnd = GetFocus();
 
-				switch (c)
+	// 윈도우 포커싱 중일 때 키 이벤트 동작
+	if (true)//(nullptr != hWnd)
+	{
+		for (int i = 0; i < (int)KEY::LAST; ++i)
+		{
+			// 키가 눌려있다.
+			if (GetAsyncKeyState(g_arr[i]) & 0x8000)
+			{
+				if (m_vecKey[i].bPrevPush)
 				{
-				case (int)Diraction::UP:
-					cout << "위" << endl;
-					break;
-				case (int)Diraction::LEFT:
-					cout << "왼쪽" << endl;
-					break;
-				case (int)Diraction::RIGHT:
-					cout << "오른쪽" << endl;
-					break;
-				case (int)Diraction::DOWN:
-					cout << "아래" << endl;
-					break;
+					// 이전에도 눌려있었다.
+					m_vecKey[i].eState = KEY_STATE::HOLD;
 				}
+				else
+				{
+					m_vecKey[i].eState = KEY_STATE::TAP;
+				}
+
+				m_vecKey[i].bPrevPush = true;
+			}
+			// 키가 안눌려있다.
+			else
+			{
+				if (m_vecKey[i].bPrevPush)
+				{
+					// 이전에 눌려있었다.
+					m_vecKey[i].eState = KEY_STATE::AWAY;
+				}
+				else
+				{
+					// 이전에도 안눌려있었다.
+					m_vecKey[i].eState = KEY_STATE::NONE;
+				}
+
+				m_vecKey[i].bPrevPush = false;
+			}
+		}
+	}
+	// 윈도우 포커싱 헤제
+	else
+	{
+		for (int i = 0; i < (int)KEY::LAST; ++i)
+		{
+			m_vecKey[i].bPrevPush = false;
+
+			if (KEY_STATE::TAP == m_vecKey[i].eState || KEY_STATE::HOLD == m_vecKey[i].eState)
+			{
+				m_vecKey[i].eState = KEY_STATE::AWAY;
+			}
+			else if (KEY_STATE::AWAY == m_vecKey[i].eState)
+			{
+				m_vecKey[i].eState = KEY_STATE::NONE;
 			}
 		}
 	}
