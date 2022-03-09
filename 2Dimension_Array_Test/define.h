@@ -18,3 +18,46 @@
 
 #define fDT CTimeMgr::GetInst()->GetfDT()
 #define DT CTimeMgr::GetInst()->GetDT()
+
+#define CLONE(type) type* Clone() { return new type(*this); }
+
+
+enum class GROUP_TYPE
+{
+	DEFAULT,
+	TILE,
+	PLAYER,
+	MONSTER,
+	PROJ_PLAYER,
+	PROJ_MONSTER,
+
+	END = 32,
+};
+
+enum class SCENE_TYPE
+{
+	TOOL,
+	START,
+	STAGE_01,
+	STAGE_02,
+
+
+
+	END,
+};
+
+
+class CObject;
+
+template<typename T>
+void Safe_Delete_Vec(vector<T>& _vec)
+{
+	for (size_t i = 0; i < _vec.size(); ++i)
+	{
+		if (nullptr != _vec[i])
+		{
+			delete _vec[i];
+		}
+	}
+	_vec.clear();
+}

@@ -49,6 +49,12 @@
     <Filter Include="헤더 파일\Making\03. Manager\TimeMgr">
       <UniqueIdentifier>{864629a6-dfe3-494c-8dde-1f4ada816b9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Making\05. Scene">
+      <UniqueIdentifier>{8b570ad6-13b0-4eea-bf49-1ea482bf51d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Making\05. Scene\MainScene">
+      <UniqueIdentifier>{fc8f3d5f-f4e4-4ae8-a3cb-9ff87c4b0baa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="snake_body.cpp">
@@ -93,6 +99,18 @@
     <ClCompile Include="CTimeMgr.cpp">
       <Filter>헤더 파일\Making\03. Manager\TimeMgr</Filter>
     </ClCompile>
+    <ClCompile Include="CSceneMgr.cpp">
+      <Filter>헤더 파일\Making\03. Manager\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>헤더 파일\Making\05. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CObject.cpp">
+      <Filter>헤더 파일\Making\04. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CMainScene.cpp">
+      <Filter>헤더 파일\Making\05. Scene\MainScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h">
@@ -117,7 +135,19 @@
       <Filter>헤더 파일\Making\04. Object\Item</Filter>
     </ClInclude>
     <ClInclude Include="CTimeMgr.h">
+      <Filter>헤더 파일\Making\03. Manager\TimeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CSceneMgr.h">
+      <Filter>헤더 파일\Making\03. Manager\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>헤더 파일\Making\05. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CObject.h">
       <Filter>헤더 파일\Making\04. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CMainScene.h">
+      <Filter>헤더 파일\Making\05. Scene\MainScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

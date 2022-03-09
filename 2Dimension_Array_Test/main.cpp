@@ -1,16 +1,16 @@
 #include "global.h"
 #include "CCore.h"
 
-HWND GetConsoleHwnd(void)
+HWND GetConsoleHwnd()
 {
 #define MY_BUFSIZE 1024
-	WCHAR pszNewWindowTitle[MY_BUFSIZE];
-	WCHAR pszOldWindowTitle[MY_BUFSIZE];
+	WCHAR pszNewWindowTitle[MY_BUFSIZE]; 
+	WCHAR pszOldWindowTitle[MY_BUFSIZE] = L"HelloConsole";
 	HWND hwndFound;
 
 	GetConsoleTitle(pszNewWindowTitle, MY_BUFSIZE);
 
-	wsprintf(pszNewWindowTitle, L"%d/%d", GetTickCount(), GetCurrentProcessId());
+	swprintf_s(pszNewWindowTitle, L"%d/%d", (int)GetTickCount64(), GetCurrentProcessId());
 
 	SetConsoleTitle(pszNewWindowTitle);
 

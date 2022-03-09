@@ -3,6 +3,7 @@
 
 #include "CKeyMgr.h"
 #include "CTimeMgr.h"
+#include "CSceneMgr.h"
 
 CCore::CCore()
 	: m_ptInvenSize{}
@@ -20,6 +21,7 @@ int CCore::init(HWND _hWnd, POINT _Size)
 	// Manager ÃÊ±âÈ­
 	CTimeMgr::GetInst()->init();
 	CKeyMgr::GetInst()->init();
+	CSceneMgr::GetInst()->init();
 	
 
 	return S_OK;
@@ -30,7 +32,11 @@ void CCore::progress()
 	// Manager update
 	CTimeMgr::GetInst()->update();
 	CKeyMgr::GetInst()->update();
+	CSceneMgr::GetInst()->update();
+
 
 	// rendering
+	CSceneMgr::GetInst()->render();
+
 	CTimeMgr::GetInst()->render();
 }
